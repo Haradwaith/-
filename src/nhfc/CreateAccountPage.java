@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  */
 public class CreateAccountPage {
     
-    public CreateAccountPage(Stage primaryStage, GridPane pane, Scene scene){
+    public CreateAccountPage(Stage primaryStage, GridPane pane, Scene scene, boolean edit){
         
         //welcome title
         Text sceneTitle= new Text("Create Account");
@@ -35,9 +35,6 @@ public class CreateAccountPage {
         
         Label userNameTitle = new Label("User Name:");
         pane.add(userNameTitle, 0, 1);
-        
-        TextField userName = new TextField();
-        pane.add(userName, 1, 1);
         
         Label lastNameTitle = new Label("Last Name:");
         pane.add(lastNameTitle, 0, 2);
@@ -48,20 +45,25 @@ public class CreateAccountPage {
         Label emailTitle = new Label("Email:");
         pane.add(emailTitle, 0, 3);
         
-        TextField emailName = new TextField();
-        pane.add(emailName, 1, 3);
-        
         Label passwordTitle = new Label("Password:");
         pane.add(passwordTitle, 0, 4);
-        
-        PasswordField password = new PasswordField();
-        pane.add(password, 1, 4);
         
         Label pwdConfirmTitle = new Label("Confirm Password:");
         pane.add(pwdConfirmTitle, 0, 5);
         
-        PasswordField pwdConfirm = new PasswordField();
-        pane.add(pwdConfirm, 1, 5);
+        
+        
+        if(!edit) {
+            TextField userName = new TextField();
+            pane.add(userName, 1, 1);
+            PasswordField password = new PasswordField();
+            pane.add(password, 1, 4);
+            TextField emailName = new TextField();
+            pane.add(emailName, 1, 3);
+            PasswordField pwdConfirm = new PasswordField();
+            pane.add(pwdConfirm, 1, 5);
+        }
+      
         
         Button connected = new Button("Login");
         Button back = new Button("Back");
@@ -73,21 +75,18 @@ public class CreateAccountPage {
         back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-               // new NHFC().start(primaryStage);
+               new NHFC().start(primaryStage);
             }
         });
         
         connected.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                verificationAccount(password, pwdConfirm, pane);
             }
         });
       
         primaryStage.setScene(scene);
         primaryStage.show();
-         
-        
     }
      
     public void verificationAccount(PasswordField pwd, PasswordField pwdConfirm, GridPane pane){

@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 public class userProfil {
     
     public userProfil(Stage primaryStage, GridPane pane, Scene scene){
+        
         //welcome title
         Text sceneTitle= new Text("Profil");
         sceneTitle.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
@@ -83,6 +84,9 @@ public class userProfil {
                 NumberVerification(taille, pane);
             }
         });
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
     };
         
     
