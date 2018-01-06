@@ -38,4 +38,19 @@ public class Exercice {
         this.name = name;
     }
     
+     public void initialiseExercice(Float init){
+        
+    }
+    
+    public void commencerExercice(){
+        
+    }
+    
+    public void arreterExercice(){
+        
+    }
+    
+    public void pauseExercice(){
+        
+    }
 }

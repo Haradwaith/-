@@ -12,9 +12,9 @@ import java.util.Date;
  * @author Clelia
  */
 public class Imc {
-    private int idUser;
+   private int idUser;
     private Date dateCalcule;
-    private float resultatImc;
+    private float ResultatImc; 
 
     public int getIdUser() {
         return idUser;
@@ -33,11 +33,15 @@ public class Imc {
     }
 
     public float getResultatImc() {
-        return resultatImc;
+        return ResultatImc;
     }
 
-    public void setResultatImc(float resultatImc) {
-        this.resultatImc = resultatImc;
+    public void setResultatImc(float ResultatImc) {
+        this.ResultatImc = ResultatImc;
+    }
+    
+    public void calculeImc(int taille, int poids){
+        this.ResultatImc = (float) (poids/Math.pow(taille,2));
     }
    
     

@@ -5,19 +5,75 @@
  */
 package nhfc;
 
+import java.util.List;
+
 /**
  *
  * @author Clelia
  */
 public class User {
-    private String name,lastName, gender;
-    private int Age;
-    private float poid;
-    private int id; 
-    private final String login;         //ne pourra pas être modifier
+    private String name,lastname,email; 
+    private int age, id; 
+    private float poids, taille,imcActuelle;
+    private List<Sport> Sport;
+    private final String login;
 
+    public String getLogin() {
+        return login;
+    }
+
+    public int getIdCompteUser() {
+        return idCompteUser;
+    }
+
+    public void setIdCompteUser(int idCompteUser) {
+        this.idCompteUser = idCompteUser;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    private int idCompteUser;
+    private String password;
+    
     public User(String login) {
         this.login = login;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public int getId() {
@@ -28,43 +84,58 @@ public class User {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public float getPoids() {
+        return poids;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPoids(float poids) {
+        this.poids = poids;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public float getTaille() {
+        return taille;
     }
 
-    public void setAge(int Age) {
-        this.Age = Age;
+    public void setTaille(float taille) {
+        this.taille = taille;
     }
 
-    public void setPoid(int poid) {
-        this.poid = poid;
+    public float getImcActuelle() {
+        return imcActuelle;
     }
 
-    public String getName() {
-        return name;
+    public void setImcActuelle(float imcActuelle) {
+        this.imcActuelle = imcActuelle;
     }
 
-    public String getLastName() {
-        return lastName;
+    public List<Sport> getSport() {
+        return Sport;
     }
 
-    public String getGender() {
-        return gender;
+    public void setSport(List<Sport> Sport) {
+        this.Sport = Sport;
     }
-
-    public int getAge() {
-        return Age;
+    
+    
+    public void choisirSport(Sport sp){
+        
     }
-
-    public float getPoid() {
-        return poid;
+    
+    public void connecterCompte(){
+        
     }
+    
+    public void déconnecterCompte(){
+        
+    }
+    
+    public void modifierCompte(){
+        
+    }
+    
+    public void creerCompte(){
+        
+    }
+ 
+    
 }
