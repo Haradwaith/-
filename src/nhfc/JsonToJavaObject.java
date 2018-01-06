@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  * @author Clelia
  */
-public class JsonToJavaObject {
+public class JsonToJavaObject { 
     
     
     public JsonToJavaObject () {
