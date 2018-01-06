@@ -5,8 +5,9 @@
  */
 package nhfc;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.net.URL;
 
 /**
  *
@@ -20,13 +21,16 @@ public class JsonToJavaObject {
         String jsonInString = "{'name' : 'mkyong'}";
 
         //JSON from file to Object
-        Staff obj = mapper.readValue(new File("c:\\file.json"), Staff.class);
+        Sport obj = mapper.readValue(new File("c:\\file.json"), Sport.class);
+        
+        //String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
+       // Car car = objectMapper.readValue(json, Car.class);  
         
 
         //JSON from URL to Object
-        Staff obj = mapper.readValue(new URL("http://mkyong.com/api/staff.json"), Staff.class);
+       // Sport obj = mapper.readValue(new URL("http://mkyong.com/api/staff.json"), Sport.class);
 
         //JSON from String to Object
-        Staff obj = mapper.readValue(jsonInString, Staff.class);
+        //Sport obj = mapper.readValue(jsonInString, Sport.class);
     }
 }
