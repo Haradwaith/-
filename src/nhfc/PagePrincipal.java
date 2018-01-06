@@ -5,6 +5,8 @@
  */
 package nhfc;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,6 +30,13 @@ public final class PagePrincipal {
         
         Button modify = new Button("Modifier");
         pane.add(modify, 0,0);
+        
+        modify.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               new userProfil(primaryStage, pane, scene);
+            }
+        });
                 
         //welcome title
         Text sceneTitle= new Text("Home");
@@ -60,7 +69,16 @@ public final class PagePrincipal {
         }
         
         Button btSuivis = new Button("Suivis");
+        btSuivis.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new ImcPlot(primaryStage,pane);
+            }
+        });
         pane.add(btSuivis, 0, length);
+        
+        //btSuivis.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: red;"); 
+        //modify.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;"); 
 
         primaryStage.setScene(scene);
         primaryStage.show();

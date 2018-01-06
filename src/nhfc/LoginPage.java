@@ -33,7 +33,6 @@ public class LoginPage {
      */
     public LoginPage(Stage primaryStage,GridPane pane, Scene scene){
         
-          
         //welcome title
         Text sceneTitle= new Text("Login!");
         sceneTitle.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
@@ -52,6 +51,14 @@ public class LoginPage {
         pane.add(password, 1, 2);
         
         Button connected = new Button("Login");
+         
+        connected.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+               
+            }
+        });
+        
         Button back = new Button("Back");
         HBox hbox = new HBox(10);
         hbox.setAlignment(Pos.BOTTOM_RIGHT);
@@ -62,10 +69,10 @@ public class LoginPage {
         back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-               // new NHFC().start(primaryStage);
+               new NHFC().start(primaryStage);
             }
         });
-      
+           
         primaryStage.setScene(scene);
         primaryStage.show();
     }

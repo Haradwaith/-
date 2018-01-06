@@ -35,7 +35,7 @@ public class LoginCreate {
             public void handle(ActionEvent t) {
                 pane.getChildren().remove(hboxL);
                 pane.getChildren().remove(hbox);
-                //new LoginClass(primaryStage,pane,scene);
+                //new LoginPage(primaryStage,pane,scene);
                 new PagePrincipal(primaryStage, pane, scene);
             }
         });
@@ -45,7 +45,7 @@ public class LoginCreate {
             public void handle(ActionEvent t) {
                 pane.getChildren().remove(hboxL);
                 pane.getChildren().remove(hbox);
-                new CreateAccountPage(primaryStage, pane, scene);
+                new CreateAccountPage(primaryStage, pane, scene, false);
             }
         });
       

@@ -12,13 +12,22 @@ import java.util.List;
  * @author Clelia
  */
 public class Sport {
-    private List<Exercice> exercice;
+     private List<Short> idExercice;
+    private String type;
 
-    public List<Exercice> getExercice() {
-        return exercice;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setExercice(List<Exercice> exercice) {
-        this.exercice = exercice;
+    public String getType() {
+        return type;
+    }
+
+    public List<Short> getSport() {
+        return idExercice;
+    }
+
+    public void setSport(List<Short> idExercice) {
+        this.idExercice = idExercice;
     }
 }
