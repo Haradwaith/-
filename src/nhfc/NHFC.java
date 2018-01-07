@@ -5,6 +5,8 @@
  */
 package nhfc;
 
+import nhfc.view.LoginOrCreate;
+import nhfc.classes.Database;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,8 +25,8 @@ public class NHFC extends Application{
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(25, 25, 25, 25));
-        Scene scene = new Scene(pane, 400, 550);
-        LoginCreate mainGame = new LoginCreate(primaryStage,pane,scene);
+        Scene scene = new Scene(pane, 450, 550);
+        LoginOrCreate mainGame = new LoginOrCreate(primaryStage,pane,scene);
         Database data = new Database();
         
     }
