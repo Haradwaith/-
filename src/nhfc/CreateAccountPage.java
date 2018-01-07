@@ -51,8 +51,6 @@ public class CreateAccountPage {
         Label pwdConfirmTitle = new Label("Confirm Password:");
         pane.add(pwdConfirmTitle, 0, 5);
         
-        
-        
         if(!edit) {
             TextField userName = new TextField();
             pane.add(userName, 1, 1);
@@ -63,9 +61,9 @@ public class CreateAccountPage {
             PasswordField pwdConfirm = new PasswordField();
             pane.add(pwdConfirm, 1, 5);
         }
-      
         
         Button connected = new Button("Login");
+        
         Button back = new Button("Back");
         HBox hbox = new HBox(10);
         hbox.setAlignment(Pos.BOTTOM_LEFT);

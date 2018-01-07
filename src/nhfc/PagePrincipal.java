@@ -26,18 +26,11 @@ public final class PagePrincipal {
     public PagePrincipal(Stage primaryStage,GridPane pane, Scene scene){
         
         String Test = "lo";
-        String sportName[] = {"Courrir", "Vélo","jefais","neoiuoi","saislom","julie","harad","mpalapal",""};
+        String sportName[] = {"Training", "Vélo","Corde à sauter", "Piscine","Escalade","Haltérophilie","Squat","Fitness","Zumba"};
         
         Button modify = new Button("Modifier");
         pane.add(modify, 0,0);
-        
-        modify.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               new userProfil(primaryStage, pane, scene);
-            }
-        });
-                
+            
         //welcome title
         Text sceneTitle= new Text("Home");
         sceneTitle.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
@@ -60,7 +53,7 @@ public final class PagePrincipal {
             for(int i = 4; i < length -1; i++){
                 for(int j = 0; j < 2; j++){
                     System.out.println(i);
-                     test(sportName[y], pane, i, j);
+                     test(primaryStage,sportName[y], pane, i, j, scene);
                      ++y; 
                  }
              }
@@ -69,13 +62,24 @@ public final class PagePrincipal {
         }
         
         Button btSuivis = new Button("Suivis");
+        pane.add(btSuivis, 0, length);
+        
         btSuivis.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                pane.getChildren().clear();
                 new ImcPlot(primaryStage,pane);
             }
         });
-        pane.add(btSuivis, 0, length);
+        
+        modify.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               pane.getChildren().clear();
+               new userProfil(primaryStage, pane, scene);
+            }
+        });
+            
         
         //btSuivis.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: red;"); 
         //modify.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;"); 
@@ -85,10 +89,17 @@ public final class PagePrincipal {
     }
     
     
-    public void test(String name, GridPane pane, int i, int j){
+    public void test(Stage primaryStage, String name, GridPane pane, int i, int j, Scene scene){
         Button bt = new Button(name);
-        bt.setShape(new Circle(1.5));
         pane.add(bt, j, i);
+        bt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                pane.getChildren().clear();
+               new choiceSportOrTime( pane, scene, name);
+             
+            }
+        });
     }
     
     public void imcActuel(GridPane pane){
