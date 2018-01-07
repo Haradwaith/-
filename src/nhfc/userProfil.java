@@ -7,6 +7,7 @@ package nhfc;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -26,7 +27,7 @@ import javafx.stage.Stage;
 public class userProfil {
     
     public userProfil(Stage primaryStage, GridPane pane, Scene scene){
-        
+     
         //welcome title
         Text sceneTitle= new Text("Profil");
         sceneTitle.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
@@ -72,9 +73,12 @@ public class userProfil {
         pane.add(taille, 1, 6);
                 
         Button connected = new Button("Save");
-        HBox hbox = new HBox(20);
-        hbox.getChildren().add(connected);
-        pane.add(hbox, 0, 10);
+         
+        Button back = new Button("Back");
+        HBox hbox = new HBox(10);
+        hbox.setAlignment(Pos.BOTTOM_LEFT);
+        hbox.getChildren().addAll(connected,back);
+        pane.add(hbox, 1, 7);
        
         connected.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -82,6 +86,14 @@ public class userProfil {
                 NumberVerification(weight,pane);
                 NumberVerification(age, pane);
                 NumberVerification(taille, pane);
+            }
+        });
+        
+        back.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                pane.getChildren().clear();
+               new PagePrincipal(primaryStage, pane, scene);
             }
         });
         

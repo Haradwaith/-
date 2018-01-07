@@ -33,8 +33,7 @@ public class LoginCreate {
         connected.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                pane.getChildren().remove(hboxL);
-                pane.getChildren().remove(hbox);
+                pane.getChildren().clear();
                 //new LoginPage(primaryStage,pane,scene);
                 new PagePrincipal(primaryStage, pane, scene);
             }
@@ -43,8 +42,7 @@ public class LoginCreate {
         createAccount.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                pane.getChildren().remove(hboxL);
-                pane.getChildren().remove(hbox);
+                pane.getChildren().clear();
                 new CreateAccountPage(primaryStage, pane, scene, false);
             }
         });
