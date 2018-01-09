@@ -12,7 +12,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import nhfc.classes.Database;
 
 public class NHFC extends Application{
      /**
@@ -32,8 +31,7 @@ public class NHFC extends Application{
         pane.setVgap(10);
         pane.setPadding(new Insets(25, 25, 25, 25));
         Scene scene = new Scene(pane, 450, 550);
-        LoginOrCreate mainGame = new LoginOrCreate(primaryStage,pane,scene);
-        Database data = new Database();
+        LoginOrCreate mainGame = new LoginOrCreate(primaryStage,pane,scene);  
         
         primaryStage.setScene(scene);
         primaryStage.show();

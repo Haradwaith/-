@@ -5,8 +5,9 @@
  */
 package nhfc.classes;
 
-import nhfc.classes.Sport;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +19,13 @@ public class User {
     private float poids, taille,imcActuelle;
     private List<Sport> Sport;
     private final String login;
+    private int idCompteUser;
+    private String password;
+    
+    public User(String login, String passwd) {
+        this.login = login;
+        this.password = passwd;
+    }
 
     public String getLogin() {
         return login;
@@ -33,16 +41,6 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    private int idCompteUser;
-    private String password;
-    
-    public User(String login) {
-        this.login = login;
     }
 
     public String getName() {
@@ -122,12 +120,15 @@ public class User {
         
     }
     
-    public void connecterCompte(){
-        
-    }
-    
-    public void déconnecterCompte(){
-        
+    public boolean connecterCompte(){
+        try {
+             System.out.println(Database.getInstance().loginRight(this));
+            return true;
+        } catch (Exception ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
     }
     
     public void modifierCompte(){
