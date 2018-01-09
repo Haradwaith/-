@@ -4,3 +4,7 @@
 # IntelliJ
 *.iml
 .idea/*
+
+## ignore out directory
+out/
+out/*
