@@ -68,7 +68,7 @@ public class createOrEditAccount {
         TextField weight = new TextField();
         pane.add(weight, 1, 5);
        
-        Label heightLabel = new Label("Taille:");
+        Label heightLabel = new Label("Taille (cm):");
         pane.add(heightLabel, 0, 6);
         
         TextField height = new TextField();
@@ -94,6 +94,7 @@ public class createOrEditAccount {
         
         //le texte du bouton change en fonction de l'edition ou non
         Button connected = new Button();
+        Button back = new Button();
          
         //si on edit notre compte
         if(!edit) {
@@ -101,31 +102,39 @@ public class createOrEditAccount {
             
            
             connected.setText("Créer");
+            back.setText("Retour");
         }else {
             connected.setText("Sauvegarder");
+            back.setText("Retour à la page principal");
         }
-        
-        
        
         //button de retour + action des boutons
-        Button back = new Button("Retour à la page principal");
+        
         HBox hbox = new HBox(10);
         hbox.setAlignment(Pos.BOTTOM_LEFT);
         hbox.getChildren().addAll(connected,back);
         pane.add(hbox, 0, 2, 2, 13);
         
         back.setOnAction((ActionEvent t) -> {
-            new NHFC().start(primaryStage);
+            pane.getChildren().clear();
+            if(!edit){
+                new NHFC().start(primaryStage);
+            }else {
+                new PagePrincipal(primaryStage, pane, scene);
+            }
+            
         });
         
         connected.setOnAction((ActionEvent event) -> {
             if(
-                verificationPwd(password, pwdConfirm, pane) && 
-                isEmailAdress(email,pane) &&
-                verificationText(userName, "Prénom", pane) &&
                 verificationText(lastName, "Nom", pane) &&
-                verificationNumber(weight, "Poids", pane) &&
-                verificationNumber(height, "Poids", pane)    
+                verificationText(userName, "Prénom", pane) &&
+                verificationNumber(age, "Age", pane, 99) &&
+                verificationNumber(weight, "Poids", pane, 140) &&
+                verificationNumber(height, "Taille", pane, 200)&&
+                isEmailAdress(email,pane) &&
+                verificationPwd(password, pwdConfirm, pane)  
+                
             ){
                 pane.getChildren().clear();
                 new PagePrincipal(primaryStage, pane, scene);
@@ -172,10 +181,10 @@ public class createOrEditAccount {
         }
     };
     
-    public boolean verificationNumber(TextField number, String name, GridPane pane){
+    public boolean verificationNumber(TextField number, String name, GridPane pane, int maxLength){
         Label error = new Label("Erreur dans le champs " + name);
         
-        if(!number.getText().isEmpty() && number.getText().matches("[0-9]*") && Integer.parseInt(number.getText()) < 100){
+        if(!number.getText().isEmpty() && number.getText().matches("[0-9]*") && Integer.parseInt(number.getText()) < maxLength){
             return true; 
         } else {
            pane.add(error, 0, 16);

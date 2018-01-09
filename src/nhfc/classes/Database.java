@@ -18,56 +18,61 @@ import java.util.logging.Logger;
  * @author Clelia
  */
 public class Database {
+    
+    private static Database dbIsntance;
+    private static Connection con ;
+    private static Statement stmt;
+    private static ResultSet rs;
+    
+    public static Database getInstance() throws Exception{
+        if(dbIsntance==null){
+            dbIsntance= new Database();
+        }
+        return dbIsntance;
+    }
   
-    public Database() {
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
+    public Connection getConnection() {
+        if(con ==null){
+            try {
+                String url = "jdbc:mysql://localhost/nhfc?";
+                String dbName = "Clelia";
+                String passwd = "clelia";
 
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/nhfc?"
-                    + "user=Clelia&password=clelia");
-
-            stmt = conn.createStatement();
-            String sql = "SELECT * FROM users";
-
-            rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                System.out.print(rs.getString("FirstName"));
-                System.out.print(" , ");
-                System.out.println(rs.getString("LastName"));
-            }
-            rs.close();
-            rs =null;
-            stmt.close();
-            stmt = null;
-            conn.close();
-            conn = null;
-            // Do something with the Connection
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        } finally{
-            if(rs != null){
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (stmt != null){
-                try {
-                    stmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if(conn != null){
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                con = DriverManager.getConnection(url+ "user=" + dbName+ "&password=" + passwd);
+                return con;
+               
+            } catch (SQLException ex) {
             }
         }
+        return null;   
     } 
+    
+    static void closeConnection(Connection conn){
+        try {
+            conn.close();
+        } catch (Exception e) {
+        }
+    }
+    
+    public boolean loginRight(User user){
+        try {
+            System.out.println(user.getLogin());
+            String query="Select * from users Where login='" + user.getLogin()+ "'";
+            Connection con = Database.getInstance().getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            
+            if(rs.next()){
+                System.out.println(rs.getString("Firstname"));
+                return true;
+            }
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+
 }

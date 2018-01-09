@@ -53,7 +53,7 @@ public class Test {
     public static class backtoMainPage {
         public backtoMainPage(GridPane pane, Stage primaryStage,Scene scene, int i , int j) {
             
-            Button button = new Button("Retour à la page principal");
+            Button button = new Button("Retour Page Principal");
             pane.add(button, i, j);
             
             button.setOnAction((ActionEvent event) -> {

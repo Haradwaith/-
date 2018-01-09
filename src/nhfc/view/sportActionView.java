@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import nhfc.PagePrincipal;
-import nhfc.classes.Test;
+import nhfc.classes.Test.backtoMainPage;
 import nhfc.classes.Test.mainTexte;
 
 /**
@@ -38,7 +38,7 @@ public class sportActionView {
         pane.add(waitTitle, 1, 5);
  
         
-        new Test.backtoMainPage(pane, primaryStage, scene, 2, 5);
+        new backtoMainPage(pane, primaryStage, scene, 1, 7);
         
         saveTitle.setOnAction((ActionEvent event) -> {
             pane.getChildren().clear();
