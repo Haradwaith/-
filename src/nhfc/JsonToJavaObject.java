@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nhfc;
+/*package nhfc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.net.URL;
 /**
  *
  * @author Clelia
- */
+ 
 public class JsonToJavaObject { 
     
     
@@ -33,4 +33,4 @@ public class JsonToJavaObject {
         //JSON from String to Object
         //Sport obj = mapper.readValue(jsonInString, Sport.class);
     }
-}
+}*/
