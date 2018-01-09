@@ -73,9 +73,8 @@ public class LoginPage {
                new NHFC().start(primaryStage);
             }
         });
-           
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
     }
+    
     
 }

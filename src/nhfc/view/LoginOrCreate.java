@@ -5,7 +5,6 @@
  */
 package nhfc.view;
 
-import nhfc.view.createOrEditAccount;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -49,9 +48,5 @@ public class LoginOrCreate {
                 new createOrEditAccount(primaryStage, pane, scene, false);
             }
         });
-      
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    
+    }  
 }

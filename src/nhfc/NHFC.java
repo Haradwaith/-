@@ -6,15 +6,21 @@
 package nhfc;
 
 import nhfc.view.LoginOrCreate;
-import nhfc.classes.Database;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import nhfc.classes.Database;
 
 public class NHFC extends Application{
+     /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
     
     @Override
     public void start(Stage primaryStage) {
@@ -29,13 +35,10 @@ public class NHFC extends Application{
         LoginOrCreate mainGame = new LoginOrCreate(primaryStage,pane,scene);
         Database data = new Database();
         
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
+   
     
 }

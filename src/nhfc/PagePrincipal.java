@@ -70,8 +70,6 @@ public final class PagePrincipal {
         
         //btSuivis.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: red;"); 
         //modify.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;"); 
-
-   
     }
     
     

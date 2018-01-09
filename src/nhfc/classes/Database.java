@@ -27,22 +27,17 @@ public class Database {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/nhfc?"
                     + "user=Clelia&password=clelia");
-
+            
+            String requete = "SELECT * FROM users"; 
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM users";
-
-            rs = stmt.executeQuery(sql);
+            rs = stmt.executeQuery(requete);
+           
             while (rs.next()) {
                 System.out.print(rs.getString("FirstName"));
                 System.out.print(" , ");
                 System.out.println(rs.getString("LastName"));
             }
-            rs.close();
-            rs =null;
-            stmt.close();
-            stmt = null;
-            conn.close();
-            conn = null;
+      
             // Do something with the Connection
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,6 +45,7 @@ public class Database {
             if(rs != null){
                 try {
                     rs.close();
+                    rs =null;
                 } catch (SQLException ex) {
                     Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -57,6 +53,7 @@ public class Database {
             if (stmt != null){
                 try {
                     stmt.close();
+                    stmt = null;
                 } catch (SQLException ex) {
                     Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -64,10 +61,12 @@ public class Database {
             if(conn != null){
                 try {
                     conn.close();
+                    conn = null;
                 } catch (SQLException ex) {
                     Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     } 
+
 }
