@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nhfc;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -24,6 +23,7 @@ public class NHFC extends Application{
         pane.setVgap(10);
         pane.setPadding(new Insets(25, 25, 25, 25));
         Scene scene = new Scene(pane, 400, 550);
+        scene.getStylesheets().add("DarkTheme.css");
         LoginCreate mainGame = new LoginCreate(primaryStage,pane,scene);
         Database data = new Database();
         

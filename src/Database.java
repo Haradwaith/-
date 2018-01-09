@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nhfc2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,15 +11,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import nhfc.Database;
 
 /**
  *
  * @author Clelia
  */
-public class database {
-    
-    public database() {
+public class Database {
+  
+    public Database() {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -38,12 +36,12 @@ public class database {
                 System.out.print(" , ");
                 System.out.println(rs.getString("LastName"));
             }
-            /*rs.close();
+            rs.close();
             rs =null;
             stmt.close();
             stmt = null;
             conn.close();
-            conn = null;*/
+            conn = null;
             // Do something with the Connection
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,5 +68,5 @@ public class database {
                 }
             }
         }
-    }     
+    } 
 }

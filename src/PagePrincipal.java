@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nhfc;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,7 +27,7 @@ public final class PagePrincipal {
         
         Button modify = new Button("Modifier");
         pane.add(modify, 0,0);
-                
+
         //welcome title
         Text sceneTitle= new Text("Home");
         sceneTitle.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
@@ -61,6 +60,8 @@ public final class PagePrincipal {
         
         Button btSuivis = new Button("Suivis");
         pane.add(btSuivis, 0, length);
+
+        scene.getStylesheets().add("DarkTheme.css");
 
         primaryStage.setScene(scene);
         primaryStage.show();
