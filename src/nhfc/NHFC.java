@@ -6,7 +6,6 @@
 package nhfc;
 
 import nhfc.view.LoginOrCreate;
-import nhfc.classes.Database;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +14,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class NHFC extends Application{
+     /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
     
     @Override
     public void start(Stage primaryStage) {
@@ -26,16 +31,12 @@ public class NHFC extends Application{
         pane.setVgap(10);
         pane.setPadding(new Insets(25, 25, 25, 25));
         Scene scene = new Scene(pane, 450, 550);
-        LoginOrCreate mainGame = new LoginOrCreate(primaryStage,pane,scene);
-        Database data = new Database();
+        LoginOrCreate mainGame = new LoginOrCreate(primaryStage,pane,scene);  
         
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
+   
     
 }

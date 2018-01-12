@@ -5,19 +5,59 @@
  */
 package nhfc.classes;
 
-import nhfc.classes.Sport;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Clelia
  */
 public class User {
-    private String name,lastname,email; 
-    private int age, id; 
+    private String name,lastname,email, gender; 
+    private int age, idCompteUser; 
     private float poids, taille,imcActuelle;
     private List<Sport> Sport;
     private final String login;
+    private String mdp;
+    private Boolean connecté;
+    
+    public User(String login, String passwd) {
+        this.login = login;
+        this.mdp = passwd;
+    }
+    
+    public User(String name, String lastname, String email, int age, float poids, float taille, String login, String mdp, String gender) {
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.age = age;
+        this.poids = poids;
+        this.taille = taille;
+        this.login = login;
+        this.mdp = mdp;
+        this.gender = gender;
+    }
+    
+    public Boolean getConnecté() {
+        return connecté;
+    }
+
+    public void setConnecté(Boolean connecté) {
+        this.connecté = connecté;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+    
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getLogin() {
         return login;
@@ -31,18 +71,8 @@ public class User {
         this.idCompteUser = idCompteUser;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    private int idCompteUser;
-    private String password;
-    
-    public User(String login) {
-        this.login = login;
+    public String getMdp() {
+        return mdp;
     }
 
     public String getName() {
@@ -75,14 +105,6 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public float getPoids() {
@@ -122,20 +144,37 @@ public class User {
         
     }
     
-    public void connecterCompte(){
+    public User connecterCompte(){
+        User user = null;
+        try {
+            user = Database.getInstance().loginRight(this);
+            return user;
+        } catch (Exception ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
+
+    }
+    
+    public boolean modifierCompte(User user){
+        try {
+            System.out.println(user.getAge());
+            return Database.getInstance().updateUser(user);
+        } catch (Exception ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
         
     }
     
-    public void déconnecterCompte(){
-        
-    }
+    public boolean creerCompte(User user){
+        try {
+            return Database.getInstance().createUser(user);
+        } catch (Exception ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     
-    public void modifierCompte(){
-        
-    }
-    
-    public void creerCompte(){
-        
     }
  
     

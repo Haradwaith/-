@@ -5,7 +5,6 @@
  */
 package nhfc.view;
 
-import nhfc.view.createOrEditAccount;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -13,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import nhfc.PagePrincipal;
 
 /**
  *
@@ -23,12 +21,12 @@ public class LoginOrCreate {
     
     public LoginOrCreate(Stage primaryStage,GridPane pane, Scene scene){
               
-        Button connected = new Button("Login");
+        Button connected = new Button("Connection");
         HBox hbox = new HBox(20);
         hbox.getChildren().add(connected);
         pane.add(hbox, 0, 4);
         
-        Button createAccount = new Button("Create Account");
+        Button createAccount = new Button("Créer un compte");
         HBox hboxL = new HBox(10);
         hboxL.getChildren().add(createAccount);
         pane.add(hboxL, 0, 2);
@@ -37,8 +35,7 @@ public class LoginOrCreate {
             @Override
             public void handle(ActionEvent t) {
                 pane.getChildren().clear();
-                //new LoginPage(primaryStage,pane,scene);
-                new PagePrincipal(primaryStage, pane, scene);
+                new LoginPage(primaryStage,pane,scene);
             }
         });
         
@@ -46,12 +43,8 @@ public class LoginOrCreate {
             @Override
             public void handle(ActionEvent t) {
                 pane.getChildren().clear();
-                new createOrEditAccount(primaryStage, pane, scene, false);
+                new createOrEditAccount(primaryStage, pane, scene, false, null);
             }
         });
-      
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    
+    }  
 }

@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import nhfc.classes.Test.mainTexte;
 import nhfc.classes.Test.otherTexte;
+import nhfc.classes.User;
 import nhfc.view.createOrEditAccount;
 
 /**
@@ -24,21 +25,28 @@ import nhfc.view.createOrEditAccount;
  */
 public final class PagePrincipal {
     
-    public PagePrincipal(Stage primaryStage,GridPane pane, Scene scene){
+    public PagePrincipal(Stage primaryStage,GridPane pane, Scene scene, User user){
         
-        String Test = "lo";
+        String name = user.getName();
+        String gende = null;
         String sportName[] = {"Training", "Vélo","Corde à sauter", "Piscine","Escalade","Haltérophilie","Squat","Fitness","Zumba"};
         
         Button modify = new Button("Modifier");
         pane.add(modify, 5,0);
             
         //welcome title        
-        new mainTexte(pane,"Home");
+        new mainTexte(pane,"Accueil");
         
-        new otherTexte(pane, "Welcome " + Test, 0, 2);
-        new otherTexte(pane, "Votre imc actuel est: ", 0, 3);
+        if(user.getGender() == "homme"){
+            gende = "Monsieur";
+        }else {
+            gende = "Madama";
+        }
         
-        textImcCurrent(pane);
+        new otherTexte(pane, "Bonjour " + gende + name, 0, 2);  
+        textImcCurrent(pane,user);
+        
+        new otherTexte(pane, "Votre imc actuel est: " , 0, 3);
  
         int length = sportName.length ;
         
@@ -52,14 +60,14 @@ public final class PagePrincipal {
         
         modify.setOnAction((ActionEvent event) -> {
             pane.getChildren().clear();
-            new createOrEditAccount(primaryStage, pane, scene, true);
+            new createOrEditAccount(primaryStage, pane, scene, true, user);
         });
         
         int y = 0;
         try {
             for(int i = 4; i < length -1; i++){
                 for(int j = 0; j < 2; j++){
-                    sportView(primaryStage,sportName[y], pane, i, j, scene);
+                    sportView(primaryStage,sportName[y], pane, i, j, scene, user);
                     ++y; 
                  }
              }
@@ -70,12 +78,10 @@ public final class PagePrincipal {
         
         //btSuivis.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: red;"); 
         //modify.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;"); 
-
-   
     }
     
     
-    public void sportView(Stage primaryStage, String name, GridPane pane, int i, int j, Scene scene){
+    public void sportView(Stage primaryStage, String name, GridPane pane, int i, int j, Scene scene, User user){
         Button bt = new Button(name);
         pane.add(bt, j, i);
         
@@ -83,16 +89,20 @@ public final class PagePrincipal {
             @Override
             public void handle(ActionEvent event) {
                pane.getChildren().clear();
-               new choiceTimeOrKcal(primaryStage, pane, name, scene);
+               new choiceTimeOrKcal(primaryStage, pane, name, scene, user);
             }
         });
     }
     
-    public void textImcCurrent(GridPane pane){
-        int imc = 70;                     //IMC = taille/poid²
+    public void textImcCurrent(GridPane pane, User user){
+         //IMC = poid/taille²
+        double tailleImc = (double) user.getTaille()/100;
+        double tailleCarre = Math.pow(tailleImc, 2);                                              
+        double imc = (float) user.getPoids() / tailleCarre;
+        
         Label imcReponse = new Label();
         
-        if(imc < 25){
+        if(imc < 18.5){
             imcReponse.setText("Etat de maigreur");
             
         }else if( 25 < imc && imc < 30 ){
