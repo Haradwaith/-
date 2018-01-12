@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import nhfc.PagePrincipal;
 import nhfc.classes.Test;
 import nhfc.classes.Test.mainTexte;
+import nhfc.classes.User;
 
 
 
@@ -26,7 +27,7 @@ import nhfc.classes.Test.mainTexte;
  */
 public class choiceTimeOrKcal {
     
-    public choiceTimeOrKcal(Stage primaryStage, GridPane pane, String name,  Scene scene){
+    public choiceTimeOrKcal(Stage primaryStage, GridPane pane, String name,  Scene scene, User user){
         
          //welcome title
         new mainTexte(pane, "Choix pour " + name );
@@ -39,7 +40,7 @@ public class choiceTimeOrKcal {
             
         bt.setOnAction((ActionEvent event) -> {
             pane.getChildren().clear();
-            new PagePrincipal(primaryStage, pane, scene);
+            new PagePrincipal(primaryStage, pane, scene, user);
         });
 
         
@@ -69,11 +70,12 @@ public class choiceTimeOrKcal {
         hbox.setAlignment(Pos.BOTTOM_LEFT);
         hbox.getChildren().addAll(saveButton,bt);
         pane.add(hbox, 1, 5);
+        User user = new User("clelia", "test");
         
         saveButton.setOnAction((ActionEvent event) -> {
             if(verificationNumber(input, pane)){
                 pane.getChildren().clear();
-                new sportActionView(primaryStage,pane, sportName,scene,input.getText(), initial);
+                new sportActionView(primaryStage,pane, sportName,scene,input.getText(), initial, user);
             }
            
         });

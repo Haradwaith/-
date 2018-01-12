@@ -5,17 +5,13 @@
  */
 package nhfc.view;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import nhfc.PagePrincipal;
-import nhfc.classes.Test;
+import nhfc.classes.Test.backtoMainPage;
 import nhfc.classes.Test.otherTexte;
 import nhfc.classes.Test.mainTexte;
+import nhfc.classes.User;
 
 /**
  *
@@ -23,7 +19,7 @@ import nhfc.classes.Test.mainTexte;
  */
 public class exerciceFinish {
     
-    public exerciceFinish(Stage primaryStage, GridPane pane, String name,Scene scene, float numberChoice, char initial, float otherUnite) throws InterruptedException{
+    public exerciceFinish(Stage primaryStage, GridPane pane, String name,Scene scene, float numberChoice, char initial, float otherUnite, User user) throws InterruptedException{
         new mainTexte(pane,"Félicitation pour l'exercice "+ name );
         new otherTexte(pane, "vous avez fait:", 0, 1);
         
@@ -35,7 +31,7 @@ public class exerciceFinish {
             new otherTexte(pane, "Temps: " + otherUnite + " min", 0, 3);
         }
 
-        new Test.backtoMainPage(pane, primaryStage, scene, 2, 5);
+        new backtoMainPage(pane, primaryStage, scene, 2, 5, user);
    
        
     }

@@ -51,14 +51,14 @@ public class Test {
     
     
     public static class backtoMainPage {
-        public backtoMainPage(GridPane pane, Stage primaryStage,Scene scene, int i , int j) {
+        public backtoMainPage(GridPane pane, Stage primaryStage,Scene scene, int i , int j, User user) {
             
             Button button = new Button("Retour Page Principal");
             pane.add(button, i, j);
             
             button.setOnAction((ActionEvent event) -> {
                 pane.getChildren().clear();
-                new PagePrincipal(primaryStage, pane, scene);
+                new PagePrincipal(primaryStage, pane, scene,user);
             });
         }
     }
